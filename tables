@@ -1,0 +1,25 @@
+//Creating user table
+CREATE TABLE user (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    first_name varchar(35),
+    last_name varchar(35),
+    PRIMARY KEY(user_id)
+);
+//creating app table
+CREATE TABLE app (
+    app_id INT NOT NULL AUTO_INCREMENT,
+    app_name varchar(35),
+    PRIMARY KEY(app_id)
+);
+//
+CREATE TABLE user_app (
+    app_id INT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (app_id)
+        REFERENCES app(app_id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (user_id)
+        REFERENCES user(user_id)
+        ON DELETE CASCADE,
+    PRIMARY KEY(app_id,user_id)
+);
